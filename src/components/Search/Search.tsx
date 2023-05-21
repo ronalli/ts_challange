@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import styles from './Search.module.scss';
 import {ReactComponent as SearchIcon} from 'assets/icon-search.svg'
 import { Button } from 'components/Button';
@@ -6,30 +5,40 @@ import { Button } from 'components/Button';
 interface SearchProps { 
 	hasError: boolean,
 	onSubmit: (text: string) => void,
+}
 
+type formFileds = {
+	username: HTMLInputElement;
 }
 
 export const Search = ({ hasError, onSubmit}: SearchProps) => {
-	const searchRef = useRef<HTMLInputElement | null>(null)
 
-	const handleSubmit = (event: React.FormEvent) => {
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement & formFileds>) => {
 		event.preventDefault();
-		const text = searchRef.current?.value || '';
+
+		const text = event.currentTarget.username.value;
 		if(text) {
 			onSubmit(text);
-			if(searchRef.current) {
-				searchRef.current.value = '';
-			}
+			event.currentTarget.reset();
 		}
 	}
 
 	return (
   	<form onSubmit={handleSubmit} autoComplete='off'>
 			<div className={styles.search}>
-				<label htmlFor="search" className={styles.label}>
+				<label 
+					htmlFor="search" 
+					className={styles.label}
+				>
 					<SearchIcon />
 				</label>
-				<input type="text" className={styles.textField} ref={searchRef} id='search' name='username' placeholder='Search GitHub username...'/>
+				<input 
+					type="text" 
+					className={styles.textField} 
+					id='search' 
+					name='username' 
+					placeholder='Search GitHub username...'
+				/>
 				{
 					hasError && (
 						<div className={styles.error}>No result</div>
