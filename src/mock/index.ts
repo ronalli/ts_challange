@@ -4,7 +4,7 @@ export const defaultUser: LocalGithubUser = {
 	"login": "ronalli",
   "id": 29086587,
   "avatar": "https://avatars.githubusercontent.com/u/29086587?v=4",
-  "name": "ronalli",
+  "name": "Khakimov Nikita",
   "company": "tehnar.info",
   "blog": "",
   "location": "Ukraine",

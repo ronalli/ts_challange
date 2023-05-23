@@ -4,6 +4,7 @@ import styles from './UserStat.module.scss';
 interface UserStatProps extends Pick<LocalGithubUser, 'repos' | 'following' | 'followers'> { }
 
 export const UserStat = ({ repos, following, followers }: UserStatProps) => (
+	
   <div className={styles.userStat} >
    <div className={styles.info}>
 		<div className={styles.infoTitle}>Repos</div>
