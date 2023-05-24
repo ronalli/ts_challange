@@ -22,11 +22,11 @@ export const ItemInfo = ({ icon, text, isLink }: ItemInfoProps) => {
         {isLink && text ? (
           <a
             href={currentHref}
-            target='_blanck'
-            ref='noreferrer'
+            target='_blank'
+            rel='noreferrer'
             className={styles.link}
           >
-            currentText
+            {currentText}
           </a>
         ) : (
           currentText
